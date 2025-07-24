@@ -8,6 +8,7 @@ use App\Models\Contact;
 use App\Models\FeatureCard;
 use App\Models\FeaturesTab;
 use App\Models\HeroSection;
+use App\Models\Message;
 use App\Models\Services;
 use App\Models\Testimonials;
 use Illuminate\Http\Request;
@@ -55,41 +56,35 @@ class DashboardController extends Controller  implements Dashboardinterface
     {
 
         $hero = HeroSection::firstOrNew();
-        $user = Auth::user();
-        return view('admin.layouts.heroSection.add', compact('user', 'hero'));
+        return view('admin.layouts.heroSection.add', compact('hero'));
     }
 
     public function showAddToAboutSection()
     {
         $about = AboutSection::firstOrNew();
-        $user = Auth::user();
 
-        return view('admin.layouts.aboutSection.add', compact('user', 'about'));
+        return view('admin.layouts.aboutSection.add', compact( 'about'));
     }
 
     public function showFeaturesSection()
     {
         $feature = FeaturesTab::all();
-        $user = Auth::user();
-        // dd($feature);
 
-        return view('admin.layouts.featuresSection.table', compact('user', 'feature'));
+        return view('admin.layouts.featuresSection.table', compact( 'feature'));
     }
 
     public function showAddTooFeaturesSection()
     {
-        $user = Auth::user();
         $features = FeaturesTab::all();
 
-        return view('admin.layouts.featuresSection.add', compact('user', 'features'));
+        return view('admin.layouts.featuresSection.add', compact( 'features'));
     }
 
         public function showModifyFeaturesSection($id)
     {
         $feature =  FeaturesTab::find($id);
-        $user =Auth::user();
         
-        return view('admin.layouts.featuresSection.update',compact('user','feature'));
+        return view('admin.layouts.featuresSection.update',compact('feature'));
 
     }
     
@@ -100,23 +95,20 @@ class DashboardController extends Controller  implements Dashboardinterface
     }
 
     public function showFeaturesCardSection(){
-        $user = Auth::user();
-        return view('admin.layouts.featureCard.add',compact('user'));
+        return view('admin.layouts.featureCard.add',);
     }
 
     public function showFeaturesCardTableSection(){
-        $user = Auth::user();
         $card = FeatureCard::all();
 
-        return view('admin.layouts.featureCard.table',compact('user','card'));
+        return view('admin.layouts.featureCard.table',compact('card'));
 
     }
 
     public function showModifyFeatureCardSection($id){
-        $user = Auth::user();
         $card = FeatureCard::find($id);
         
-        return view('admin.layouts.featureCard.update',compact('card','user'));
+        return view('admin.layouts.featureCard.update',compact('card'));
 
     }
 
@@ -128,29 +120,25 @@ class DashboardController extends Controller  implements Dashboardinterface
     }
     
     public function showAddToCTASection(){
-        $user = Auth::user();
         $cta = CallToAction::firstOrNew();
-        return view('admin.layouts.callToAction.add',compact('user','cta'));
+        return view('admin.layouts.callToAction.add',compact('cta'));
     }
 
     public function showAddToTestimonialSection(){
-        $user = Auth::user();
-        return view('admin.layouts.testimonials.add',compact('user'));
+        return view('admin.layouts.testimonials.add');
     }
 
 
     public function showAddToTestimonialTableSection(){
-        $user = Auth::user();
         $testimonial = Testimonials::all();
-        return view('admin.layouts.testimonials.table',compact('user','testimonial'));
+        return view('admin.layouts.testimonials.table',compact('testimonial'));
     }
     
     
     public function showUpdateToTestimonialSection($id){
-        $user = Auth::user();
         $testimonial = Testimonials::find($id);
 
-        return view('admin.layouts.testimonials.update',compact('user','testimonial'));
+        return view('admin.layouts.testimonials.update',compact('testimonial'));
         
     }
     
@@ -162,29 +150,30 @@ class DashboardController extends Controller  implements Dashboardinterface
     
     }
 
-    public function showAddToServicesSection(){
-        $user = Auth::user();        
-        return view('admin.layouts.servicesSection.add',compact('user'));
+    public function showAddToServicesSection(){  
+        return view('admin.layouts.servicesSection.add');
         
     }
 
     public function showAddToServicesTableSection(){
         $service = Services::all();
-        $user = Auth::user();
-        return view('admin.layouts.servicesSection.table',compact('user','service'));
+        return view('admin.layouts.servicesSection.table',compact('service'));
     }
 
     public function showUpdateToTeServicesSection($id){
-        $user = Auth::user();
         $services = Services::find($id);
-        return view('admin.layouts.servicesSection.update',compact('user','services'));
+        return view('admin.layouts.servicesSection.update',compact('services'));
     }
 
 
     public function showAddToContactSection(){
-        $user= Auth::user();
         $contact = Contact::firstOrNew();
-        return view('admin.layouts.contactSection.add',compact('user','contact'));
+        return view('admin.layouts.contactSection.add',compact('contact'));
+    }
+
+    public function showMessagespage(){
+        $msg = Message::all();
+        return view('admin.layouts.messagesFromUser.table',compact('msg'));
     }
 
 
@@ -200,7 +189,7 @@ class DashboardController extends Controller  implements Dashboardinterface
             'button_1_link' => ['required'],
             'button_2_text' => ['required'],
             'button_2_link' => ['required'],
-            'customer_text' => ['required'],
+            'customer_text' => ['nullable'],
             'main_image' => ['required'],
         ]);
         if ($validation->fails()) {
@@ -274,8 +263,8 @@ class DashboardController extends Controller  implements Dashboardinterface
             'profile_position' => ['required'],
             'contact_label' => ['required'],
             'contact_number' => ['required'],
-            'experience_text' => ['required'],
-            'experience_years' => ['required'],
+            'experience_text' => ['nullable'],
+            'experience_years' => ['nullable'],
         ]);
 
         if ($validation->fails()) {

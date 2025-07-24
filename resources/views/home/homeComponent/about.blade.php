@@ -56,10 +56,15 @@
                 <img src="{{asset('admin/dynamicImages/about/'.$about->main_image)}}" alt="Business Meeting" class="img-fluid main-image rounded-4">
                 <img src="{{asset('admin/dynamicImages/about/'.$about->small_image)}}" alt="Team Discussion" class="img-fluid small-image rounded-4">
               </div>
+
+              @if ($about->experience_years || $about->experience_text )
               <div class="experience-badge floating">
                 <h3>{{$about->experience_years}} <span>Years</span></h3>
                 <p>{{$about->experience_text}} </p>
               </div>
+              @endif
+
+
             </div>
           </div>
         </div>

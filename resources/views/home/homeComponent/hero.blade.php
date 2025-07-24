@@ -33,7 +33,8 @@
             <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
               <img src="{{ asset('admin/dynamicImages/hero/'.$hero->main_image) }}" alt="Hero Image" class="img-fluid">
 
-              <div class="customers-badge">
+              @if ( $hero->customer_text )
+                 <div class="customers-badge">
                 <div class="customer-avatars">
                   <img src="assets/img/avatar-1.webp" alt="Customer 1" class="avatar">
                   <img src="assets/img/avatar-2.webp" alt="Customer 2" class="avatar">
@@ -44,6 +45,8 @@
                 </div>
                 <p class="mb-0 mt-2">{{ $hero->customer_text }}</p>
               </div>
+              @endif
+             
             </div>
           </div>
         </div>

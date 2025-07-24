@@ -37,9 +37,9 @@
       </nav>
   
       
-     <div class="flex-wrap justify-content-end gap-2">
+     <!-- <div class="flex-wrap justify-content-end gap-2">
       <a class="btn-getstarted" style="padding: 8px 16px;min-width: 100px;text-align: center;" href="{{ route('showLogin')}}">Login</a>
       <a class="btn-getstarted" style="padding: 8px 16px;min-width: 100px;text-align: center;" href="{{ route('showRegister')}}">Register</a>
-     </div>
+     </div> -->
     </div>
   </header>
