@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MessageController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -84,6 +85,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/AddToContactSection',[DashboardController::class,'AddToContactSection'])->name('AddToContactSection');
 
     Route::get('/showMessagespage',[DashboardController::class,'showMessagespage'])->name('showMessagespage');
+    Route::get('/showMessage/{id}',[MessageController::class,'showMessage'])->name('showMessage');
+
+    Route::get('/showReply/{id}',[MessageController::class,'showReplay'])->name('showReplay');
+    Route::post('/sendMail/{id}',[MessageController::class,'sendMail'])->name('sendMail');
+
     
     
 });

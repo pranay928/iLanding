@@ -55,7 +55,7 @@
            <p>{{$contact->form_text}}</p>
 
            <form action="{{ route('msgFromHomePage') }}" method="post">
-            @csrf
+             @csrf
              <div class="row gy-4">
 
                <div class="col-md-6">
@@ -75,13 +75,13 @@
                </div>
 
                <div class="col-12 text-center">
-                   @if($errors->any())
-                   <div class="alert alert-danger mt-3">
-                     <ul class="mb-0">
-                       @foreach ($errors->all() as $error)
-                       <li>{{ $error }}</li>
-                       @endforeach
-                     </ul>
+                 @if($errors->any())
+                 <div class="alert alert-danger mt-3">
+                   <ul class="mb-0">
+                     @foreach ($errors->all() as $error)
+                     <li>{{ $error }}</li>
+                     @endforeach
+                   </ul>
                    A @endif
                  </div>
                  @if(session('success'))
