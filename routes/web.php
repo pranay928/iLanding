@@ -19,10 +19,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
+//for normal user
 Route::get('/',[HomeController::class,'home']);
 Route::post('/msgFromHomePage',[HomeController::class,'msgFromHomePage'])->name('msgFromHomePage');
 
-
+//for for admin login and user register
 Route::middleware(['guest'])->group(function () {
     
     Route::get('/showRegister',[AdminController::class,'showRegister'])->name('showRegister');
@@ -32,7 +33,7 @@ Route::middleware(['guest'])->group(function () {
     
 });
 
-
+//for admin dashboard
 Route::middleware(['auth'])->group(function () {
     
     
@@ -90,6 +91,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/showReply/{id}',[MessageController::class,'showReplay'])->name('showReplay');
     Route::post('/sendMail/{id}',[MessageController::class,'sendMail'])->name('sendMail');
 
+    Route::get('/showAddToNavbar',[DashboardController::class,'showAddToNavbar'])->name('showAddToNavbar');
+    Route::get('/showTableNavbar',[DashboardController::class,'showTableNavbar'])->name('showTableNavbar');
+    Route::post('/AddToNavbar',[DashboardController::class,'AddToNavbar'])->name('AddToNavbar');
+    Route::get('/showUpdateToNavbar/{id}',[DashboardController::class,'showUpdateToNavbar'])->name('showUpdateToNavbar');
+    Route::put('/updateToNavbar/{id}',[DashboardController::class,'updateToNavbar'])->name('updateToNavbar');
+    Route::delete('/DeleteNavbar/{id}',[DashboardController::class,'DeleteNavbar'])->name('DeleteNavbar');
     
     
 });

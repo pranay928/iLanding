@@ -8,13 +8,15 @@
           <div class="right_topbar">
              <div class="icon_info">
                 <ul>
-                   <li><a href="#"><i class="fa fa-bell-o"></i><span class="badge">2</span></a></li>
+                   <!-- <li><a href="#"><i class="fa fa-bell-o"></i><span class="badge">2</span></a></li> -->
                    <li><a href="#"><i class="fa fa-question-circle"></i></a></li>
                    <li><a href="{{ route('showMessagespage') }}"><i class="fa fa-envelope-o"></i>
                          @php
                          $messagcounte = App\Models\Message::where('isRead','==','true')->count();
                          @endphp
+                         @if ($messagcounte != 0 )
                          <span class="badge">{{ $messagcounte }}</span>
+                         @endif
                       </a></li>
                 </ul>
                 <ul class="user_profile_dd">

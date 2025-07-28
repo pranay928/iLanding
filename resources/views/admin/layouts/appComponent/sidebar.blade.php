@@ -26,6 +26,12 @@
       <ul class="list-unstyled components">
 
          <li>
+            <a href="{{ route('showTableNavbar') }}">
+               <i class="fa fa-dashboard yellow_color"></i> Nav Bar
+            </a>
+         </li>
+
+         <li>
             <a href="{{ route('showAddToHeroSection') }}">
                <i class="fa fa-dashboard yellow_color"></i> Hero Section
             </a>

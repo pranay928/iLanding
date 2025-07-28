@@ -30,13 +30,13 @@ class MessageController extends Controller
     public function sendMail(Request $request , $id)
     {
         $details = [
-            'title' => $request->name,
-            'body' => 'This is a test email.'
+            'subject' => $request->subject,
+            'message' => $request->message,
         ];
         $user = Message::findOrFail($id);
 
         Mail::to($user->email)->send(new Messages($details));
 
-        return redirect()->back()->with('success','email sent :)');
+        return redirect()->back()->with('success','email sent ');
     }
 }

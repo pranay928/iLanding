@@ -86,7 +86,7 @@
                             {{ $message->message }}
                         </p>
                     </div>
-                    <a href="{{ route('showReplay',$message->id) }}">Replay</a>
+                    <a href="{{ route('showReplay',$message->id) }}" class="btn btn-success">Replay</a>
                 </div>
             </div>
         </div>

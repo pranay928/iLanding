@@ -15,20 +15,10 @@
 
         <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
            <h3>Send reply</h3>
-          
 
            <form action="{{ route('sendMail',$msg->id) }}" method="post">
              @csrf
              <div class="row gy-4">
-
-               <div class="col-md-6">
-                 <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-               </div>
-
-               <div class="col-md-6 ">
-                 <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-               </div>
-
                <div class="col-12">
                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
                </div>
@@ -53,10 +43,9 @@
                  </div>
                  @endif
 
-                 <button type="submit" class="btn">Send Reply</button>
+                 <button type="submit" class="btn btn-success ml-3">Send Reply</button>
                </div>
 
-             </div>
            </form>
 
          </div>

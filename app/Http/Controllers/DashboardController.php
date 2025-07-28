@@ -9,6 +9,7 @@ use App\Models\FeatureCard;
 use App\Models\FeaturesTab;
 use App\Models\HeroSection;
 use App\Models\Message;
+use App\Models\Navbar;
 use App\Models\Services;
 use App\Models\Testimonials;
 use Illuminate\Http\Request;
@@ -176,6 +177,27 @@ class DashboardController extends Controller  implements Dashboardinterface
         return view('admin.layouts.messagesFromUser.table',compact('msg'));
     }
 
+    public function showAddToNavbar(){
+        return view('admin.layouts.navbar.add');
+    }
+
+    public function showTableNavbar(){
+        $navbar = Navbar::all();
+        return view('admin.layouts.navbar.table',compact('navbar'));
+    }
+    
+    public function showUpdateToNavbar($id){
+        $navbar = Navbar::find($id);
+        return view('admin.layouts.navbar.update',compact('navbar'));
+    }
+    
+    Public function DeleteNavbar($id){
+        $navbar = Navbar::find($id);
+        $navbar->delete();
+        return redirect()->back()->with('success', 'data deleted successfully');
+
+    }
+
 
     public function addToHeroSection(Request $request)
 
@@ -192,6 +214,21 @@ class DashboardController extends Controller  implements Dashboardinterface
             'customer_text' => ['nullable'],
             'main_image' => ['required'],
         ]);
+
+        // $validation = $request->validate([
+        //     'badge_text' => ['required'],
+        //     'heading' => ['required'],
+        //     'highlight_text' => ['required'],
+        //     'description' => ['required'],
+        //     'button_1_text' => ['required'],
+        //     'button_1_link' => ['required'],
+        //     'button_2_text' => ['required'],
+        //     'button_2_link' => ['required'],
+        //     'customer_text' => ['nullable'],
+        //     'main_image' => ['required'],
+        // ]);
+
+
         if ($validation->fails()) {
             return redirect()->back()->withErrors($validation)->withInput();
         }
@@ -673,6 +710,44 @@ class DashboardController extends Controller  implements Dashboardinterface
             $data->update();
 
             return redirect()->back()->with('success','Data updated successfully');
+
+    }
+
+    public function AddToNavbar(Request $request){
+
+        $validation = Validator::make($request->all(),[
+            'title' => ['required'],
+            'link' => ['required'],
+            
+        ]);
+               if ($validation->fails()) {
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+
+        $data = new Navbar;
+        $data->title = $request->title;
+        $data->link = $request->link;
+        $data->save();
+        return redirect()->back()->with('success','Data added successfully');
+    }
+
+    public function updateToNavbar(Request $request , $id){
+        $validator = Validator::make($request->all(),[
+            'title' => ['required'],
+            'link' => ['required'],        
+        ]);
+
+        if($validator->fails()){
+             return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $data = Navbar::find($id);
+        $data->title = $request->title ;
+        $data->link = $request->link ;
+        $data->update();
+
+        return redirect()->back()->with('success','data updated successfully');
+
 
     }
 
