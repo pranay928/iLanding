@@ -25,11 +25,11 @@
                     </tr>
                     <!-- Footer -->
                     <tr>
-                        <td style="background:#f1f1f1; padding:15px; text-align:center; font-size:14px; color:#555;">
-                         <p> 
-                            Thanks,
-                            {{ config('app.name') }}
-                        </p>  
+                        <td style="background:#f1f1f1; padding:15px; text-align:left; font-size:14px; color:#555;">
+                            <p>
+                                Thanks, <br>
+                                {{ config('app.name') }}
+                            </p>
                         </td>
                     </tr>
                 </table>
