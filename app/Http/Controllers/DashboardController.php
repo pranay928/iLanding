@@ -278,7 +278,7 @@ class DashboardController extends Controller  implements Dashboardinterface
         if ($image) {
 
             $imagename = time() . '.' . $image->getClientOriginalExtension();
-
+                                                   
             $request->main_image->move('admin\dynamicImages\hero', $imagename);
             $hero->main_image  = $imagename;
         }

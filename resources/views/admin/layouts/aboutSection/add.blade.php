@@ -24,11 +24,7 @@
             </div>
             @endif
 
-            @if(session('success'))
-            <div class="alert alert-success mt-3">
-                {{ session('success') }}
-            </div>
-            @endif
+           j
 
             <form action="{{ route('addToAboutSection') }}" method="POST" enctype="multipart/form-data" class="mt-4">
                 @csrf

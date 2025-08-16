@@ -31,7 +31,7 @@
 
           <div class="col-lg-6">
             <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-              <img src="{{ asset('admin/dynamicImages/hero/'.$hero->main_image) }}" alt="Hero Image" class="img-fluid">
+              <img src="{{ asset('admin/dynamicImages/hero/'.$hero->main_image) }}" alt="Hero Image" style="border-radius: 25px;" class="img-fluid">
 
               @if ( $hero->customer_text )
                  <div class="customers-badge">
